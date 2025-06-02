@@ -4,6 +4,6 @@ export const environment = {
     geminiApiUrl: import.meta.env.VITE_GEMINI_API_URL || '',
 };
 
-console.log('GEMINI_API_KEY:', environment.geminiApiKey);
-console.log('GEMINI_API_URL:', environment.geminiApiUrl);
+// console.log('GEMINI_API_KEY:', environment.geminiApiKey);
+// console.log('GEMINI_API_URL:', environment.geminiApiUrl);
 
