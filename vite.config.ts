@@ -13,6 +13,10 @@ export default defineConfig({
     'process.env': {},
   },
   server: {
-    allowedHosts: ['yensao.hoanggiaquynhon.io.vn'], // Add the allowed host here
+    hmr: {
+      protocol: 'wss',
+      host: 'yensao.hoanggiaquynhon.io.vn',
+      port: 443
+    }
   },
 })
