@@ -12,4 +12,7 @@ export default defineConfig({
   define: {
     'process.env': {},
   },
+  server: {
+    allowedHosts: ['yensao.hoanggiaquynhon.io.vn'], // Add the allowed host here
+  },
 })
