@@ -18,15 +18,15 @@ services:
     env_file:
       - .env
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx-proxy
-    ports:
-      - "80:80" # Expose port 80 for external access
-    volumes:
-      ./nginx.conf:/etc/nginx/conf.d/default.conf:ro # Mount your custom NGINX config
-    depends_on:
-      - app
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx-proxy
+  #   ports:
+  #     - "80:80" # Expose port 80 for external access
+  #   volumes:
+  #    - ./conf.d:/etc/nginx/conf.d:ro # Mount your custom NGINX config
+  #   depends_on:
+  #     - app
 
 networks:
   default:
