@@ -175,7 +175,7 @@ const LoginPage = () => {
             </Link>
           </p>
           <p className="test-account">
-            Tài khoản test: <strong>dinhkhang@gmail.com</strong> /{" "}
+            Tài khoản test: <strong>***</strong> /{" "}
             <strong>abc</strong>
           </p>
         </div>
