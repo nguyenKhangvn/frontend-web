@@ -227,6 +227,8 @@ const Home = () => {
                       backgroundColor: "#f5f5f5",
                       filter: "brightness(0.85)",
                     }}
+                    loading="lazy"
+                    fetchPriority="high"
                   />
                   <div
                     style={{
