@@ -120,6 +120,7 @@ const Header = (props: {
                               objectFit: "cover",
                               borderRadius: "4px",
                             }}
+                            loading="lazy"
                           />
                         </div>
                       ))}

@@ -19,4 +19,7 @@ export default defineConfig({
       port: 443
     }
   },
+  build: {
+    sourcemap: false,
+  },
 })
