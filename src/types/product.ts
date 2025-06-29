@@ -83,7 +83,11 @@ export interface ProductDto {
     price: number;
     discountPercent: number;
     thumbnailUrl?: string;
-    images?: string[];
+    images: {
+      id: string;
+      name: string;
+      url: string;
+    }[];
     categoryId?: string;
     categoryName?: string;
     manufacturerId?: string;
