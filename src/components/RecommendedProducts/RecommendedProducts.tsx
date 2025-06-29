@@ -128,7 +128,7 @@ const RecommendedProducts = ({
                 </div>
             )}
             <Row gutter={[16, 16]}>
-                {/* {loading ? renderSkeletons() : products.map(renderProductCard)} */}
+                {loading ? renderSkeletons() : products.map(renderProductCard)}
             </Row>
             {!loading && products.length === 0 && !error && (
                 <Empty description="Không có sản phẩm gợi ý nào." style={{ marginTop: 24 }} />

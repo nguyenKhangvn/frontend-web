@@ -125,7 +125,7 @@ function ListCategory() {
           <TableCell>
             <Tooltip title={category.description}>
               <span>
-                {category.description.length > 30
+                {category?.description?.length > 30
                   ? `${category.description.substring(0, 30)}...`
                   : category.description}
               </span>
