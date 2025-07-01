@@ -424,10 +424,17 @@ const Payment: React.FC<PaymentProps> = ({ setCurrentStep }) => {
       status: "PENDING",
       paymentMethod: paymentMethod,
     };
+    const paymentData = {
+      orderCode: orderCode,
+      amount: finalPrice,
+      paymentMethod: paymentMethod,
+      status: "PENDING",
+      paidAt: moment().format("YYYY-MM-DDTHH:mm:ss"),
+    };
 
     try {
       if (paymentMethod === "vnpay") {
-        const paymentData = {
+        const paymentRequest = {
           orderCode: orderCode,
           fullName: user?.fullName,
           description: "Thanh toán đơn hàng",
@@ -435,7 +442,7 @@ const Payment: React.FC<PaymentProps> = ({ setCurrentStep }) => {
           createdDate: moment().format("YYYY-MM-DDTHH:mm:ss"),
         };
 
-        const vnPayUrl = await paymentApi.createVnPayPayment(paymentData);
+        const vnPayUrl = await paymentApi.createVnPayPayment(paymentRequest);
         if (vnPayUrl?.url) {
           window.location.href = vnPayUrl.url;
         } else {
@@ -454,7 +461,7 @@ const Payment: React.FC<PaymentProps> = ({ setCurrentStep }) => {
         for (const item of orderItems) {
           await productApi.updateProductQuantity(item.productId, item.quantity); // Số lượng cần giảm
         }
-        await paymentApi.createPayment(orderCode);
+        await paymentApi.createPayment(paymentData);
       }
       if (res?.data) {
         message.success("Đặt hàng thành công!");

@@ -4,9 +4,12 @@ import axios from "./axios.customize";
 const URL = "api/v1/ecommerce/payment";
 
 export const paymentApi = {
+  getAll(userId: string) {
+    return axios.get(`${URL}/user/${userId}`).then((res) => res.data);
+  },
   // Thêm order
-  createPayment(orderCode: string) {
-    return axios.post(`${URL}/${orderCode}`);
+  createPayment(payment: any) {
+    return axios.post(`${URL}`, payment).then((res) => res.data);
   },
   // Tạo đơn hàng VNPay
   createVnPayPayment(order: any) {

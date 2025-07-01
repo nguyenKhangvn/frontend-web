@@ -3,20 +3,20 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 
 import { FORMAT_DATE_DISPLAY } from "~/utils/constant";
-import { useSelector } from "react-redux";
-import { orderApi } from "~/services/axios.order";
 import "./History.css";
 import { useNavigate } from "react-router-dom";
 import Order from "~/types/order";
+import { paymentApi } from "~/services/axios.payment";
+import { useSelector } from "react-redux";
 const History = () => {
   const [orderHistory, setOrderHistory] = useState([]);
   const user = useSelector((state: any) => state.account.user);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchHistory = async () => {
-      const res = await orderApi.callOrderHistory(user.id);
-      if (res && res.data) {
-        setOrderHistory(res.data);
+      const res = await paymentApi.getAll(user.id);
+      if (res) {
+        setOrderHistory(res);
       }
     };
     fetchHistory();
@@ -31,12 +31,12 @@ const History = () => {
     },
     {
       title: "Thời gian ",
-      dataIndex: "createdAt",
+      dataIndex: "paidAt",
       render: (item: string) => moment(item).format(FORMAT_DATE_DISPLAY),
     },
     {
       title: "Tổng số tiền",
-      dataIndex: "totalAmount",
+      dataIndex: "amount",
       render: (item: number) =>
         new Intl.NumberFormat("vi-VN", {
           style: "currency",
@@ -45,13 +45,19 @@ const History = () => {
     },
     {
       title: "Trạng thái",
-      render: () => <Tag color={"green"}>Thành công</Tag>,
+      dataIndex: "status",
+      render: (item: number) =>
+        item === 1 ? (
+          <Tag color="green">Đã thanh toán</Tag>
+        ) : (
+          <Tag color="red">Chưa thanh toán</Tag>
+        ),
     },
     {
       title: "Chi tiết",
       key: "action",
-      render: (_: any, record: Order) => {
-        // debugger;
+      render: (_: any, record: any) => {
+        debugger;
         if (!record) {
           return <span>Không có dữ liệu</span>;
         }
