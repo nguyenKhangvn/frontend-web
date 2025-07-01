@@ -6,11 +6,9 @@ import { MessageOutlined, CustomerServiceOutlined, RobotOutlined } from "@ant-de
 import "./ChatContainer.scss";
 
 const ChatContainer = () => {
-  // State để lưu lựa chọn của người dùng
   const [selectedChatMode, setSelectedChatMode] = useState<'gmn' | 'default'>('gmn');
   const [newMessageCount, setNewMessageCount] = useState({ gmn: 0, default: 0 });
 
-  // Mảng các mục tab
   const items = [
     {
       key: 'gmn',

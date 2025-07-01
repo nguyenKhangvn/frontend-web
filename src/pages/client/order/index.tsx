@@ -1,8 +1,8 @@
-import ViewOrder from "../../../layout/client/Order/ViewOrder";
+import ViewOrder from "./ViewOrder";
 import { Breadcrumb, Button, Result, Steps } from "antd";
 import "./order.scss";
 import { useState } from "react";
-import Payment from "~/layout/client/Order/Payment";
+import Payment from "~/pages/client/order/Payment";
 import { SmileOutlined, HomeOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 

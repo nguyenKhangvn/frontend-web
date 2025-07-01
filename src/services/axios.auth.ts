@@ -6,7 +6,7 @@ export const authApi = {
 
   callLogin(email: string, password: string) {
     const fullUrl = `${url}/login`;
-    console.log("Đường dẫn API đang gọi:", fullUrl);
+   // console.log("Đường dẫn API đang gọi:", fullUrl);
     return axios.post(fullUrl, {
       Email: email,
       Password: password,

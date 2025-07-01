@@ -176,7 +176,7 @@ const LoginPage = () => {
           </p>
           <p className="test-account">
             Tài khoản test: <strong>***</strong> /{" "}
-            <strong>abc</strong>
+            <strong>***</strong>
           </p>
         </div>
       </div>

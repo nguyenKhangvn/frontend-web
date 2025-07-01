@@ -61,7 +61,13 @@ const NAVIGATION: Navigation = [
     title: "Quản lý mã giảm giá",
     icon: <DiscountIcon />,
   },
+  {
+    segment: "",
+    title: "Quay về trang người dùng",
+    icon: <PersonOutlineIcon />,
+  },
 ];
+
 
 function CustomAppTitle() {
   return (

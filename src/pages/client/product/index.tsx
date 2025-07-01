@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import ViewDetail from "~/layout/client/Product/ViewDetail";
+import ViewDetail from "~/pages/client/product/ViewDetail";
 import { productApi } from "~/services/axios.product";
 import { getImageUrl } from "~/config/config";
 

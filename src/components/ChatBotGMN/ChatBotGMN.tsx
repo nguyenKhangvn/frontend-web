@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { chatGeminiService } from "~/services/axios.chatGMN"; // Import service để gọi API Gemini
+import { chatGeminiService } from "~/services/axios.chatGMN";
 import { Input, Button, Avatar, Spin } from "antd";
 import { SendOutlined, UserOutlined, RobotOutlined } from "@ant-design/icons";
-import "./ChatBotGMN.scss"; // Import file CSS
+import "./ChatBotGMN.scss";
 
 // Định nghĩa interface cho props
 interface ChatBotGMNProps {
@@ -35,14 +35,14 @@ const ChatBotGMN: React.FC<ChatBotGMNProps> = ({ onNewMessage }) => {
     setLoading(true);
 
     try {
-      const response = await chatGeminiService.askGemini(userText); // Gọi API Gemini
+      const response = await chatGeminiService.askGemini(userText);
       const reply =
         response?.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "Xin lỗi, tôi không hiểu."; // Lấy phản hồi từ API
+        "Xin lỗi, tôi không hiểu.";
       
       setChatHistory((prev) => {
         const updatedHistory = [...prev];
-        updatedHistory[updatedHistory.length - 1].bot = reply; // Cập nhật phản hồi của bot
+        updatedHistory[updatedHistory.length - 1].bot = reply;
         return updatedHistory;
       });
       

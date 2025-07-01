@@ -1,0 +1,129 @@
+.product-reviews {
+  margin-top: 30px;
+
+  .review-summary {
+    margin-bottom: 20px;
+
+    .rating-overview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid #f0f0f0;
+
+      .average-rating {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .review-count {
+        margin-top: 5px;
+        color: #666;
+      }
+    }
+
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      span {
+        margin-right: 10px;
+        width: 32px;
+        color: #666;
+      }
+
+      .progress-bar {
+        flex: 1;
+        height: 8px;
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .progress {
+          height: 100%;
+          background-color: #ffce3d;
+        }
+      }
+    }
+  }
+
+  .review-form {
+    margin-bottom: 20px;
+
+    .upload-hint {
+      color: #888;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .login-notice {
+      margin-left: 10px;
+      color: #ff4d4f;
+    }
+  }
+
+  .review-list {
+    .loading-reviews,
+    .no-reviews {
+      text-align: center;
+      padding: 40px 0;
+      color: #999;
+    }
+
+    .review-item {
+      margin-bottom: 16px;
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+
+        .user-info {
+          margin-left: 12px;
+          flex: 1;
+
+          .username {
+            font-weight: 500;
+          }
+
+          .review-date {
+            font-size: 12px;
+            color: #999;
+          }
+        }
+      }
+
+      .review-comment {
+        margin-bottom: 16px;
+        line-height: 1.6;
+        white-space: pre-line;
+      }
+
+      .review-media {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .review-image {
+          max-width: 200px;
+
+          img {
+            width: 100%;
+            border-radius: 4px;
+          }
+        }
+
+        .review-video {
+          max-width: 320px;
+
+          video {
+            width: 100%;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}
