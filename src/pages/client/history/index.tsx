@@ -1,11 +1,91 @@
-import History from "../../../pages/client/history";
+import { Tag, Table } from "antd";
+import moment from "moment";
+import { useEffect, useState } from "react";
 
-const HistoryPage = () => {
-    return (
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-            <History />
-        </div>
-    )
-}
+import { FORMAT_DATE_DISPLAY } from "~/utils/constant";
+import "./index.css";
+import { useNavigate } from "react-router-dom";
+import { paymentApi } from "~/services/axios.payment";
+import { useSelector } from "react-redux";
+import { orderApi } from "~/services/axios.order";
+const History = () => {
+  const [orderHistory, setOrderHistory] = useState([]);
+  const user = useSelector((state: any) => state.account.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchHistory = async () => {
+      const res = await paymentApi.getAll(user.id);
+      if (res) {
+        setOrderHistory(res);
+      }
+    };
+    fetchHistory();
+  }, []);
 
-export default HistoryPage;
+  const columns = [
+    {
+      title: "STT",
+      dataIndex: "index",
+      key: "index",
+      render: (_: any, __: any, index: number) => <>{index + 1}</>,
+    },
+    {
+      title: "Thời gian ",
+      dataIndex: "paidAt",
+      render: (item: string) => moment(item).format(FORMAT_DATE_DISPLAY),
+    },
+    {
+      title: "Tổng số tiền",
+      dataIndex: "amount",
+      render: (item: number) =>
+        new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        }).format(item),
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "status",
+      render: (item: number) =>
+        item === 1 ? (
+          <Tag color="green">Đã thanh toán</Tag>
+        ) : (
+          <Tag color="red">Chưa thanh toán</Tag>
+        ),
+    },
+    {
+      title: "Chi tiết",
+      key: "action",
+      render: (item: any) => {
+        // debugger;
+        if (!item) {
+          return <span>Không có dữ liệu</span>;
+        }
+        return (
+          <a
+            onClick={() => {
+              orderApi.getOrderById(item.orderId).then((order: any) => {
+                navigate(`/orders/${order.orderCode}`);
+              });
+            }}
+            style={{
+              color: "#1890ff",
+              cursor: "pointer",
+            }}
+          >
+            Xem chi tiết
+          </a>
+        );
+      },
+    },
+  ];
+
+  return (
+    <div>
+      <h1 style={{ margin: "15px 0" }}>Lịch sử đặt hàng:</h1>
+      <Table columns={columns} dataSource={orderHistory} pagination={false} />
+    </div>
+  );
+};
+
+export default History;

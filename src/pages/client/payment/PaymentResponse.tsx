@@ -47,7 +47,6 @@ const PaymentResponse = () => {
       new Map(selectedProducts.map((p) => [p.detail.id, p])).values()
     );
 
-    // Gửi request đến backend để xác thực
     const verifyPayment = async () => {
       try {
         const res = await paymentApi.ProcessPaymentResponse(
@@ -65,15 +64,12 @@ const PaymentResponse = () => {
             queryParams.get("vnp_TransactionStatus") || "",
         });
 
-        // Handle voucher and inventory updates if payment is successful
         if (queryParams.get("vnp_TransactionStatus") === "00") {
-          // Update voucher if used
           if (selectedVoucher) {
             await couponApi.useAndDelete(selectedVoucher.id);
             dispatch(doDeleteVoucherSelectedAction());
           }
 
-          // Update product quantities
           for (const product of uniqueProducts) {
             console.log(
               `Updating product ${product.id} with quantity ${product.quantity}`

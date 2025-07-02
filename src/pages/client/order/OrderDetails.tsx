@@ -20,7 +20,6 @@ import { orderApi } from "~/services/axios.order";
 import Order from "~/types/order";
 import { paymentApi } from "~/services/axios.payment";
 import Address from "~/types/address";
-import { addressApi } from "~/services/axios.address";
 import { useSelector } from "react-redux";
 import { CartItem } from "~/redux/order/orderSlice";
 
@@ -239,14 +238,14 @@ const OrderDetails: React.FC = () => {
         <Button onClick={() => navigate("/history")} style={{ marginRight: 8 }}>
           Danh sách đơn hàng
         </Button>
-        {order.status === "PENDING" && (
+        {/* {order.status === "PENDING" && (
           <Button
             danger
             onClick={() => message.warning("Chức năng hủy đang phát triển")}
           >
             Hủy đơn hàng
           </Button>
-        )}
+        )} */}
       </div>
     </div>
   );
