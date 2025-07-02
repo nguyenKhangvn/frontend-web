@@ -181,8 +181,8 @@ const OrderDetails: React.FC = () => {
         <Descriptions.Item label="Trạng thái đơn hàng" span={2}>
           {renderOrderStatus(order.status)}
         </Descriptions.Item>
-        <Descriptions.Item label="Trạng thái thanh toán" span={2}>
-          {renderPaymentStatus(payment.status)}
+        <Descriptions.Item label="Mã đơn hàng">
+          {order.orderCode}
         </Descriptions.Item>
         <Descriptions.Item label="Ngày đặt">
           {new Date(payment.paidAt).toLocaleString()}
@@ -236,7 +236,7 @@ const OrderDetails: React.FC = () => {
       />
 
       <div style={{ marginTop: 24, textAlign: "right" }}>
-        <Button onClick={() => navigate("/orders")} style={{ marginRight: 8 }}>
+        <Button onClick={() => navigate("/history")} style={{ marginRight: 8 }}>
           Danh sách đơn hàng
         </Button>
         {order.status === "PENDING" && (

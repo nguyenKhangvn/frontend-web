@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { FORMAT_DATE_DISPLAY } from "~/utils/constant";
 import "./History.css";
 import { useNavigate } from "react-router-dom";
-import Order from "~/types/order";
 import { paymentApi } from "~/services/axios.payment";
 import { useSelector } from "react-redux";
+import { orderApi } from "~/services/axios.order";
 const History = () => {
   const [orderHistory, setOrderHistory] = useState([]);
   const user = useSelector((state: any) => state.account.user);
@@ -56,15 +56,17 @@ const History = () => {
     {
       title: "Chi tiết",
       key: "action",
-      render: (_: any, record: any) => {
-        debugger;
-        if (!record) {
+      render: (item: any) => {
+        // debugger;
+        if (!item) {
           return <span>Không có dữ liệu</span>;
         }
         return (
           <a
             onClick={() => {
-              navigate(`/orders/${record.orderCode}`);
+              orderApi.getOrderById(item.orderId).then((order: any) => {
+                navigate(`/orders/${order.orderCode}`);
+              });
             }}
             style={{
               color: "#1890ff",
